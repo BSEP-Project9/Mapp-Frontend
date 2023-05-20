@@ -1,0 +1,26 @@
+<div class="user-profile" *ngIf="user">
+  <h3>User Details</h3>
+  <form>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="text" value="{{ user.email }}" [disabled]="!isEditMode">
+    </div>
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" value="{{ user.name }}" [disabled]="!isEditMode">
+    </div>
+    <div class="form-group">
+      <label>Surname:</label>
+      <input type="text" value="{{ user.surname }}" [disabled]="!isEditMode">
+    </div>
+    <div class="form-group">
+      <label>Phone Number:</label>
+      <input type="text" value="{{ user.phoneNumber }}" [disabled]="!isEditMode">
+    </div>
+    <div class="form-group">
+      <label>Address:</label>
+      <textarea [disabled]="!isEditMode">{{ user.address.streetName }}</textarea>
+    </div>
+    <button (click)="toggleEditMode()">{{ isEditMode ? 'Save' : 'Edit' }}</button>
+  </form>
+</div>
