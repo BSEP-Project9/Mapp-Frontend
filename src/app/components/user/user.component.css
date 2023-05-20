@@ -1,0 +1,19 @@
+.user-details {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .user-details h3 {
+    margin-top: 0;
+  }
+
+  .user-details span {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .user-details strong {
+    font-weight: bold;
+  }
