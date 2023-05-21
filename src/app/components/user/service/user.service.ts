@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
+import { LoggedUser } from '../model/loginDTO.model';
 
 
 @Injectable({
@@ -26,5 +27,12 @@ export class UserService {
       'Content-Type': 'application/json'
     });
     return this.http.get<User>(`${this.baseApiUrl}/${id}`, {headers: headers});
+  }
+
+  public getUserInfoByEmail(email:string):Observable<LoggedUser>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<LoggedUser>(`${this.baseApiUrl}/email/${email}`, {headers: headers});
   }
 }

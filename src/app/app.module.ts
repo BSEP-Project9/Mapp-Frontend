@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, forwardRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -8,8 +8,12 @@ import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectComponent } from './components/projects/project.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 
 
 @NgModule({
@@ -18,7 +22,8 @@ import { UserComponent } from './components/user/user.component';
     NavbarComponent,
     ProfileComponent,
     ProjectComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,18 @@ import { UserComponent } from './components/user/user.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LoginComponent),
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
