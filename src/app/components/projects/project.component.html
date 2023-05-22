@@ -19,7 +19,11 @@
         <label for="endDate">End Date:</label>
         <input type="date" id="endDate" name="endDate" [(ngModel)]="project.endDate" required>
       </div>
-
+      <h1 class="subject">Add worker to project</h1>
+      <div>
+        <input type="text" id="workerName" name="workerName"  placeholder="Worker Name" required>
+        <button class="add-worker-button" >Add</button>
+      </div>
       <button class="create-project-button" type="createProject">Create Project</button>
     </form>
   </div>
