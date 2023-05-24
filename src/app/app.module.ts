@@ -1,17 +1,21 @@
 import { NgModule, forwardRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserRegisterComponent } from './components/users/user-register/user-register.component';
+import { UsersComponent } from './components/users/users.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
 import { ProjectComponent } from './components/projects/project.component';
-import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 
@@ -19,6 +23,8 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
+    UserRegisterComponent,
+    UsersComponent,
     NavbarComponent,
     ProfileComponent,
     ProjectComponent,
@@ -28,6 +34,10 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
