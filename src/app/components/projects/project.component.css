@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+  }
+
+  .subject {
+    font-size: 20px;
+    color: rgb(56, 77, 99);
+    text-align: center;
+    margin-top: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .project-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .project-table th,
+  .project-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .project-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+
+  .form-container {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .project-list {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .form-container input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .create-project-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #4CAF50; /* Green */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+    margin-left:300px
+  }
+  
+  .create-project-button:hover {
+    background-color: #99c19b;
+  }

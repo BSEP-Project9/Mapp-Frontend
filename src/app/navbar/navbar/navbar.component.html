@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="logo-container">
+       <div class="item-container"><a href="#"><mat-icon style=" font-size: 35px;"></mat-icon><i></i></a></div>
+        <div><mat-icon class="logo-icon">devices_other</mat-icon></div>
+       <div class="logo-text"><a href="#"><i>Mapp</i></a></div>
+    </div>
+    <div class="user-status-container">
+      <div class="item-container"><mat-icon>language</mat-icon>Language</div>
+      <div class="item-container" routerLink="login" *ngIf="userExists === 'false'"><mat-icon>person</mat-icon>Login</div>
+      <div class="item-container-register" *ngIf="userExists === 'false'" routerLink="/register">Register</div>
+      <div class="item-container-register" *ngIf="userExists === 'true'" (click)="logout()">Log out</div>
+  </div>
+ </div>
+ <div class="menu-container">
+        <div class="item-container" routerLink="admin-profile" *ngIf="userExists === 'true'"><mat-icon>info</mat-icon>Profile</div>
+        <div class="item-container" routerLink="all-projects" *ngIf="role === 'ROLE_ADMIN'"><mat-icon>device_hub</mat-icon>Projects</div>
+        <div class="item-container" ><mat-icon>update</mat-icon>Update info</div>
+</div>

@@ -1,0 +1,44 @@
+
+<div class="container">
+
+  <div class="form-container">
+    <form (submit)="createProject()">
+      <h1 class="subject">Create new project</h1>
+
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="project.name" required>
+      </div>
+
+      <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" [(ngModel)]="project.startDate" required>
+      </div>
+
+      <div>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" [(ngModel)]="project.endDate" required>
+      </div>
+
+      <button class="create-project-button" type="createProject">Create Project</button>
+    </form>
+  </div>
+
+  <div class="project-list">
+    <h1 class="subject">All projects in company</h1>
+    <ul>
+        <table class="project-table">
+          <tr>
+            <th>Project Name</th>
+            <th>Project Started</th>
+            <th>Project Ended</th>
+          </tr>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.name }}</td>
+            <td>{{ project.startDate }}</td>
+            <td>{{ project.endDate }}</td>
+          </tr>
+        </table>
+    </ul>
+  </div>
+</div>

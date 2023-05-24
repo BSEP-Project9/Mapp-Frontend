@@ -49,7 +49,7 @@ export class UserRegisterComponent implements OnInit {
           duration: 4000
 
           })
-        //this.m_Router.navigate(['/login']);
+        this.m_Router.navigate(['/login']);
       }, error=>{
         this.snackBar.open("User Failed To Register!",'Ok', {
           duration: 4000
