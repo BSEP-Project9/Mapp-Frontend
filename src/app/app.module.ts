@@ -18,6 +18,7 @@ import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
+import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
     ProfileComponent,
     ProjectComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    UserActivationComponent
   ],
   imports: [
     BrowserModule,
