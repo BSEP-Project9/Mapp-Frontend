@@ -11,9 +11,10 @@ import { ProjectComponent } from './components/projects/project.component';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
+import { ContributionComponent } from './components/contributions/contribution.component';
+import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
     ProfileComponent,
     ProjectComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    ContributionComponent,
+    WorkersByProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
     MatIconModule,
     HttpClientModule,
     FormsModule
-  ],
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

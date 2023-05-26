@@ -39,8 +39,17 @@
     border-radius: 1rem;
 }
 
-.item-container, .item-container-register:hover{
+.item-container, .item-container-right, .item-container-register:hover{
     cursor: pointer;
+}
+
+.item-container-right {
+    margin-left: 66rem;
+    color: #000000;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .menu-container{
