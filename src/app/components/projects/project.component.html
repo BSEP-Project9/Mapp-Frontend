@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="form-container">
-    <form (submit)="createProject()">
+    <form (submit)="createProject()" *ngIf="role === 'ROLE_ADMIN'">
       <h1 class="subject">Create new project</h1>
 
       <div>
@@ -19,7 +19,6 @@
         <label for="endDate">End Date:</label>
         <input type="date" id="endDate" name="endDate" [(ngModel)]="project.endDate" required>
       </div>
-
       <button class="create-project-button" type="createProject">Create Project</button>
     </form>
   </div>
@@ -33,10 +32,10 @@
             <th>Project Started</th>
             <th>Project Ended</th>
           </tr>
-          <tr *ngFor="let project of projects">
-            <td>{{ project.name }}</td>
-            <td>{{ project.startDate }}</td>
-            <td>{{ project.endDate }}</td>
+          <tr *ngFor="let project of projects" [routerLink]="['project/workers', project.id || project.project.id]" class="clickable-row">
+            <td>{{ project.name || project.project.name }}</td>
+            <td>{{ project.startDate || project.project.startDate}}</td>
+            <td>{{ project.endDate || project.project.endDate }}</td>
           </tr>
         </table>
     </ul>
