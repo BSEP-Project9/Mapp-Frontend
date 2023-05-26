@@ -7,13 +7,13 @@
     <div class="user-status-container">
       <div class="item-container"><mat-icon>language</mat-icon>Language</div>
       <div class="item-container" routerLink="login" *ngIf="userExists === 'false'"><mat-icon>person</mat-icon>Login</div>
-      <div class="item-container-register" *ngIf="userExists === 'false'">Register</div>
+      <div class="item-container-register" *ngIf="userExists === 'false'" routerLink="/register">Register</div>
       <div class="item-container-register" *ngIf="userExists === 'true'" (click)="logout()">Log out</div>
   </div>
- </div> 
+ </div>
  <div class="menu-container">
         <div class="item-container" routerLink="all-projects" *ngIf="role === 'ROLE_ADMIN' || role === 'ROLE_PM'"><mat-icon>device_hub</mat-icon>Projects</div>
         <div class="item-container" routerLink="all-users" *ngIf="role === 'ROLE_ADMIN'"><mat-icon>person</mat-icon>Employees</div>
         <div class="item-container-right" routerLink="admin-profile" *ngIf="userExists === 'true'" ><mat-icon>info</mat-icon>Profile</div>
-
 </div> 
+
