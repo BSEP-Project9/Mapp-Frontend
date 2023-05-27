@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,8 @@ import { Credentials, LoggedUser, UserTokenState } from '../../model/loginDTO.mo
 export class AuthService {
 
   private baseUrl: string = environment.baseApiUrl + '/api/auth';
-  private accessToken = localStorage.getItem('jwt');
+  private accessToken = localStorage.getItem('accessToken');
+  private refreshToken = localStorage.getItem('refreshToken');
   private currentRole = localStorage.getItem('role');
   private authenticated = localStorage.getItem('role') ? true : false;
   private nav = new BehaviorSubject<string>(localStorage.getItem('jwt')? 'true': 'false');
@@ -31,8 +32,11 @@ export class AuthService {
     }))
         .subscribe((res: UserTokenState) => {
 
-            localStorage.setItem('jwt', res.accessToken);
+            localStorage.setItem('accessToken', res.accessToken);
             this.accessToken = res.accessToken;
+
+            localStorage.setItem('refreshToken', res.refreshToken);
+            this.refreshToken = res.refreshToken;
           
             let decodedJWT;
             if (this.accessToken != null) {
@@ -65,11 +69,24 @@ export class AuthService {
 
   public logout():void {
     this.accessToken = null;
-    localStorage.removeItem('jwt');
+    this.refreshToken = null;
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('role');
     localStorage.clear();
     this.nav.next('false');
     this.router.navigate(['']);
+  }
+
+  public updateAccessToken() {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAccessToken()}`});
+    console.log('generating new access token');
+    return this.http.post<UserTokenState>(`${this.baseUrl}/refresh-token`, { headers: headers });
+  }
+
+  public saveTokens(data: UserTokenState) {
+    this.accessToken = data.accessToken;
+    localStorage.setItem('accessToken', this.accessToken);
   }
 
   public handleError(error:HttpErrorResponse)
@@ -77,8 +94,12 @@ export class AuthService {
     return throwError(error);
   }
 
-  public getToken(){
+  public getAccessToken(){
     return this.accessToken;
+  }
+
+  public getRefreshToken(){
+    return this.refreshToken;
   }
 
   public getRole(){
@@ -92,4 +113,10 @@ export class AuthService {
   public isAuthenticated(){
     return this.authenticated;
   }
+
+  public setAccessToken(accessToken: string) {
+    localStorage.setItem('accessToken', accessToken);
+    this.accessToken = accessToken;
+  }
+
 }

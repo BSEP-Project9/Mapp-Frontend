@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 import { ContributionComponent } from './components/contributions/contribution.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
+import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { WorkersByProjectComponent } from './components/contributions/workers-by
     FormsModule
     ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
