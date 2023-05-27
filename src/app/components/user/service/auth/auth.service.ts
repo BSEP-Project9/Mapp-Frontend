@@ -55,7 +55,6 @@ export class AuthService {
               this.nav.next('true');
             });
 
-            //this.router.navigate(['/admin-profile']);
             this.router.navigate(['/success-login'])
             return res;
         });
@@ -86,15 +85,28 @@ export class AuthService {
     subscribe(
     data => {
         this.passwordlessLoginResponse = data;
-
-            /*localStorage.setItem('jwt', data.accessToken);
+            localStorage.setItem('jwt', data.accessToken);
             this.accessToken = data.accessToken;
           
             let decodedJWT;
             if (this.accessToken != null) {
                 decodedJWT = JSON.parse(window.atob(this.accessToken.split('.')[1]));
-            }*/
-            window.location.href = "http://localhost:4200/error-page"
+            }
+            this.userService.getUserInfoByEmail(decodedJWT.sub).subscribe((response: LoggedUser) => {
+
+              this.user = response;
+              console.log(this.user.role)
+              localStorage.setItem('role', this.user.role);
+              this.currentRole = this.user.role;
+              this.authenticated = this.currentRole ? true : false;
+        
+              localStorage.setItem('id', this.user.id ? this.user.id.toString() : '-1');
+              this.currentUserId = Number(this.user.id);
+
+              this.nav.next('true');
+            });
+        
+            this.router.navigate(['/success-login'])
       },
       error =>{
         window.location.href = "http://localhost:4200/error-page"
