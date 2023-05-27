@@ -16,6 +16,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 import { PasswordlessLoginComponent } from './components/user/passwordless-login/passwordless-login.component';
 import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { SuccessLoginComponent } from './shared/success-login/success-login.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { LoginRedirectComponent } from './components/user/login-redirect/login-r
     UserComponent,
     LoginComponent,
     PasswordlessLoginComponent,
-    LoginRedirectComponent
+    LoginRedirectComponent,
+    ErrorPageComponent,
+    SuccessLoginComponent
   ],
   imports: [
     BrowserModule,

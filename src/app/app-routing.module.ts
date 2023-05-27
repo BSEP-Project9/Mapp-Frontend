@@ -6,6 +6,8 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { PasswordlessLoginComponent } from './components/user/passwordless-login/passwordless-login.component';
 import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { SuccessLoginComponent } from './shared/success-login/success-login.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,10 @@ const routes: Routes = [
   {path: 'all-users' , component : UserComponent},
   {path: 'login', component: LoginComponent},
   {path: 'passwordless-login', component:PasswordlessLoginComponent},
-  {path: 'login-redirect/confirm', component:LoginRedirectComponent}
+  {path: 'login-redirect/confirm', component:LoginRedirectComponent},
+  {path: 'error-page', component: ErrorPageComponent},
+  //{path: '**', component:ErrorPageComponent},
+  {path: 'success-login', component: SuccessLoginComponent}
 ];
 
 @NgModule({

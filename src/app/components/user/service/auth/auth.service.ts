@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { Credentials, LoggedUser, PassworldessLogin, UserTokenState } from '../../model/loginDTO.model';
+import { Credentials, LoggedUser, PassworldessLogin, PassworldessLoginResponse, UserTokenState } from '../../model/loginDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,8 @@ export class AuthService {
   private user: LoggedUser = {} as LoggedUser;
   public currentNav = this.nav.asObservable();
   private currentUserId = Number(localStorage.getItem('id'));
+
+  private passwordlessLoginResponse: PassworldessLoginResponse = {} as PassworldessLoginResponse;
 
   constructor(private router:Router,
               private http: HttpClient,
@@ -53,7 +55,8 @@ export class AuthService {
               this.nav.next('true');
             });
 
-            this.router.navigate(['/admin-profile']);
+            //this.router.navigate(['/admin-profile']);
+            this.router.navigate(['/success-login'])
             return res;
         });
   }
@@ -79,23 +82,24 @@ export class AuthService {
 
   public confirmEmailLogin(token:string, email:string){
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const options = {
-      observe: 'response' as const,
-      responseType: 'text' as const,
-     // withCredentials: true // Dodajte ovo samo ako postoji potreba za slanjem kredencijala (npr. korišćenje sesije)
-    };
-    //return this.http.get<any>(`${this.baseUrl}/check-email/confirm?token=${token}`, { headers: headers })
-    this.http.get(`${this.baseUrl}/check-email/confirm?token=${token}&email=${email}`, options).subscribe(
-      response => {
-       /* const location = response.headers.get('Authorization');
-        if(location !== null){
-          console.log(location)
-         // window.location.href = location; // Preusmeravanje na dobijeni URL
-        }*/
+    this.http.get<PassworldessLoginResponse>(`${this.baseUrl}/check-email/confirm?token=${token}&email=${email}`).
+    subscribe(
+    data => {
+        this.passwordlessLoginResponse = data;
+
+            /*localStorage.setItem('jwt', data.accessToken);
+            this.accessToken = data.accessToken;
+          
+            let decodedJWT;
+            if (this.accessToken != null) {
+                decodedJWT = JSON.parse(window.atob(this.accessToken.split('.')[1]));
+            }*/
+            window.location.href = "http://localhost:4200/error-page"
       },
-      error => {
-        // Obrada greške
+      error =>{
+        window.location.href = "http://localhost:4200/error-page"
       }
+      
     );
   }
 
