@@ -4,15 +4,18 @@ import { ProjectComponent } from './components/projects/project.component';
 import { UserComponent } from './components/user/user.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
+import { UserRegisterComponent } from './components/users/user-register/user-register.component';
+import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { PasswordlessLoginComponent } from './components/user/passwordless-login/passwordless-login.component';
 import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { SuccessLoginComponent } from './shared/success-login/success-login.component';
-import { AuthGuardService as AuthGuard } from './shared/service/auth-guard.service';
+import { AuthGuardService } from './shared/service/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: 'admin-profile' , component : ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'admin-profile' , component : ProfileComponent, canActivate:[AuthGuard, AuthGuardService]},
   {path: 'all-projects', component : ProjectComponent, canActivate:[AuthGuard]},
   {path: 'all-users' , component : UserComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
@@ -20,9 +23,11 @@ const routes: Routes = [
   {path: 'login-redirect/confirm', component:LoginRedirectComponent},
   {path: 'error-page', component: ErrorPageComponent},
   //{path: '**', component:ErrorPageComponent},
-  {path: 'success-login', component: SuccessLoginComponent}
+  {path: 'success-login', component: SuccessLoginComponent},
+  { path: 'register', component: UserRegisterComponent, pathMatch:'full'},
+  {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.role = '';
     this.authService.currentNav.subscribe(message =>{
       const role = this.authService.getRole();
       console.log("**** navbar:"+ role)
