@@ -8,12 +8,13 @@ import { PasswordlessLoginComponent } from './components/user/passwordless-login
 import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { SuccessLoginComponent } from './shared/success-login/success-login.component';
+import { AuthGuardService as AuthGuard } from './shared/service/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: 'admin-profile' , component : ProfileComponent},
-  {path: 'all-projects', component : ProjectComponent},
-  {path: 'all-users' , component : UserComponent},
+  {path: 'admin-profile' , component : ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'all-projects', component : ProjectComponent, canActivate:[AuthGuard]},
+  {path: 'all-users' , component : UserComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'passwordless-login', component:PasswordlessLoginComponent},
   {path: 'login-redirect/confirm', component:LoginRedirectComponent},
