@@ -62,16 +62,19 @@ export class WorkersByProjectComponent implements OnInit {
   addWorkerToProject () {
     const workerIds: number[] = [];
     workerIds.push(this.selectedWorker);
+    alert(this.selectedWorker);
     const payload = {
       projectId: this.projectId,
       employeeIds: workerIds
     };
     this.contributionService.addWorkersToProject(payload).subscribe(data => console.log(data));
-    window.location.reload();
+    // window.location.reload();
   }
 
   removeWorkerToProject (userId: number) {
     this.contributionService.removeWorkerFromProject(userId, this.projectId).subscribe(data => console.log(data));
+    alert("This user is removed from project" );
+    
     // window.location.reload();
   }
 

@@ -19,7 +19,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
    getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseApiUrl, {headers: this.headers});
+    return this.http.get<User[]>(`${this.baseApiUrl}/all`, {headers: this.headers});
   }
 
   public getUserById(id: number):Observable<UserDto>{
