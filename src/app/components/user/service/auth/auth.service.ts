@@ -1,10 +1,10 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { Credentials, LoggedUser, UserTokenState } from '../../model/loginDTO.model';
+import { Credentials, LoggedUser, PassworldessLogin, UserTokenState } from '../../model/loginDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +70,33 @@ export class AuthService {
     localStorage.clear();
     this.nav.next('false');
     this.router.navigate(['']);
+  }
+
+  public handlePasswordlessLogin(credential: PassworldessLogin):Observable<any>{
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<any>(`${this.baseUrl}/email-login`, JSON.stringify(credential), { headers: headers })
+  }
+
+  public confirmEmailLogin(token:string, email:string){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const options = {
+      observe: 'response' as const,
+      responseType: 'text' as const,
+     // withCredentials: true // Dodajte ovo samo ako postoji potreba za slanjem kredencijala (npr. korišćenje sesije)
+    };
+    //return this.http.get<any>(`${this.baseUrl}/check-email/confirm?token=${token}`, { headers: headers })
+    this.http.get(`${this.baseUrl}/check-email/confirm?token=${token}&email=${email}`, options).subscribe(
+      response => {
+       /* const location = response.headers.get('Authorization');
+        if(location !== null){
+          console.log(location)
+         // window.location.href = location; // Preusmeravanje na dobijeni URL
+        }*/
+      },
+      error => {
+        // Obrada greške
+      }
+    );
   }
 
   public handleError(error:HttpErrorResponse)

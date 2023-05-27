@@ -12,3 +12,7 @@ export interface LoggedUser{
     "id": string,
     "role": string
 }
+
+export interface PassworldessLogin{
+    "email":string
+}
