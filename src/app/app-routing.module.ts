@@ -16,8 +16,8 @@ import { AuthGuardService } from './shared/service/auth-guard.service';
 
 const routes: Routes = [
   {path: 'admin-profile' , component : ProfileComponent, canActivate:[AuthGuard, AuthGuardService]},
-  {path: 'all-projects', component : ProjectComponent, canActivate:[AuthGuard]},
-  {path: 'all-users' , component : UserComponent, canActivate:[AuthGuard]},
+  {path: 'all-projects', component : ProjectComponent, canActivate:[AuthGuard, AuthGuardService]},
+  {path: 'all-users' , component : UserComponent, canActivate:[AuthGuard, AuthGuardService]},
   {path: 'login', component: LoginComponent},
   {path: 'passwordless-login', component:PasswordlessLoginComponent},
   {path: 'login-redirect/confirm', component:LoginRedirectComponent},

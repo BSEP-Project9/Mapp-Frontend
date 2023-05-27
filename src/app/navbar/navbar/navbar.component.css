@@ -39,7 +39,7 @@
     border-radius: 1rem;
 }
 
-.item-container, .item-container-right, .item-container-register:hover{
+.item-container, .item-container-right, .item-container-register, .logo-container:hover{
     cursor: pointer;
 }
 

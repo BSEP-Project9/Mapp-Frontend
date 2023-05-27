@@ -91,8 +91,11 @@ export class AuthService {
     subscribe(
     data => {
         this.passwordlessLoginResponse = data;
-            localStorage.setItem('jwt', data.accessToken);
+            localStorage.setItem('accessToken', data.accessToken);
             this.accessToken = data.accessToken;
+
+            localStorage.setItem('refreshToken', data.refreshToken);
+            this.refreshToken = data.refreshToken;
           
             let decodedJWT;
             if (this.accessToken != null) {
@@ -112,7 +115,8 @@ export class AuthService {
               this.nav.next('true');
             });
         
-            this.router.navigate(['/success-login'])
+            this.router.navigate(['success-login'])
+           //window.location.href = "http://localhost:4200/success-login"
       },
       error =>{
         window.location.href = "http://localhost:4200/error-page"
