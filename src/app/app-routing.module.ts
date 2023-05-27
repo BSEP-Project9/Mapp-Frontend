@@ -6,15 +6,15 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
+import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 
 const routes: Routes = [
   { path: 'register', component: UserRegisterComponent, pathMatch:'full'},
-  {path: 'admin-profile' , component : ProfileComponent},
-  {path: 'all-projects', component : ProjectComponent},
-  {path: 'all-users' , component : UserComponent},
+  {path: 'admin-profile' , component : ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'all-projects', component : ProjectComponent, canActivate: [AuthGuard]},
+  {path: 'all-users' , component : UserComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
 ];
  
 @NgModule({
