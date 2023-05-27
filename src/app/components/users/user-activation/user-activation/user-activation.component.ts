@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from './UserDTO';
 import { ActivationService } from './user-activation.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-activation',
@@ -26,10 +27,16 @@ export class UserActivationComponent implements OnInit {
 
 
   public accept(obj: UserDTO): void{
-
+    this.activationService.acceptRequest(obj).subscribe()
   }
+
   public decline(obj: UserDTO,msg: string): void{
     console.log(obj,msg)
+    if(msg == ""){
+      alert("Message must exist if decline is pressed!")
+    } else {
+      this.activationService.declineRequest(obj,msg).subscribe()
+    }
   }
 
 }
