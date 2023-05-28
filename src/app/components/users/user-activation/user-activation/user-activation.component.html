@@ -1,0 +1,28 @@
+<div>
+  <h1>Registration Requsets</h1>
+</div>
+<table border="1" id="inactiveAccountsTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Accept</th>
+      <th>Decline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of usersList">
+      <td>{{ item.name }}</td>
+      <td>{{ item.surname }}</td>
+      <td>{{ item.email }}</td>
+      <td><button (click)="accept(item)">Accept</button></td>
+
+      <td><button (click)="decline(item,inputValue)">Decline</button></td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <h2>Message:</h2>
+  <input type="text" id="myInput" [(ngModel)]="inputValue" [ngClass]="{ 'active': inputValue !== '' }"  class="custom-input">
+</div>
