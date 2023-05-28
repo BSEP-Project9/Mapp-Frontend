@@ -18,7 +18,7 @@
         <div><strong>Phone:</strong> {{ user.phoneNumber }}</div>
         <div><strong>Address:</strong> {{ user.address.streetName }} {{ user.address.streetNumber }}, {{ user.address.city }}, {{ user.address.country }}</div>
         <div><strong>Email:</strong> {{ user.email }}</div>
-        <button class="create-project-button" type="addWorker" (click)="removeWorkerToProject(user.id)">Remove worker</button>
+        <button class="create-project-button" type="addWorker" *ngIf="role === 'ROLE_PM'" (click)="removeWorkerToProject(user.id)">Remove worker</button>
     </td>
   </tr>
 </table>

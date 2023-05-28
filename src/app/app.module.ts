@@ -21,6 +21,7 @@ import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 import { ContributionComponent } from './components/contributions/contribution.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
+import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AuthGuard } from './components/user/service/auth/auth-guard.service';
     UserComponent,
     LoginComponent,
     ContributionComponent,
-    WorkersByProjectComponent
+    WorkersByProjectComponent,
+    RegisterAdminComponent
   ],
   imports: [
     BrowserModule,
