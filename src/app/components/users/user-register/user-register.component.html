@@ -1,0 +1,121 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./user-register.component.css">
+  <title>Register</title>
+</head>
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value)">
+
+<div class="container">
+  <h1>Register</h1>
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      placeholder="Enter email"
+      name="email"
+      id="email"
+      ngModel
+      required
+    />
+
+    <label for="password"><b>Password</b></label>
+    <input title="Min 6 characters, including special characters and capital letters."
+      type="password"
+      placeholder="Enter password"
+      name="password"
+      id="password"
+      ngModel
+      required
+    />
+
+    <label for="confirmPassword"><b>Confirm Password</b></label>
+    <input
+      type="password"
+      placeholder="Repeat password"
+      name="confirmPassword"
+      id="confirmPassword"
+      ngModel
+      required
+    />
+
+
+    <label for="name"><b>Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter name"
+      name="name"
+      id="name"
+      ngModel
+      required
+    />
+
+    <label for="surname"><b>Surname</b></label>
+    <input
+      type="text"
+      placeholder="Enter surname"
+      name="surname"
+      id="surname"
+      ngModel
+      required
+    />
+    <label for="streetName"><b>Street Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter street name"
+      name="streetName"
+      id="streetName"
+      ngModel
+      required
+    />
+
+    <label for="streetNumber"><b>Street Number</b></label>
+    <input
+      type="text"
+      placeholder="Enter street number"
+      name="streetNumber"
+      id="streetNumber"
+      ngModel
+      required
+    />
+
+    <label for="city"><b>City</b></label>
+    <input
+      type="text"
+      placeholder="Enter city"
+      name="city"
+      id="city"
+      ngModel
+      required
+    />
+
+    <label for="country"><b>Country</b></label>
+    <input
+      type="text"
+      placeholder="Enter country"
+      name="country"
+      id="country"
+      ngModel
+      required
+    />
+
+    <label for="phoneNumber"><b>Phone number</b></label>
+    <input
+      type="text"
+      placeholder="Enter phone number"
+      name="phoneNumber"
+      id="phoneNumber"
+      ngModel
+      required
+    />
+
+    <label for="role"><b>Role</b></label>
+    <select id="role" name="role" ngModel required>
+      <option value=ROLE_SWE>SWE</option>
+      <option value=ROLE_PM>PM</option>
+      <option value=ROLE_HR>HR</option>
+    </select>
+
+    <button type="submit" onclick="">Register</button>
+    </div>
+</form>

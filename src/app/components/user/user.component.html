@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employees</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <h1>All Employees in Company</h1>
+
+  <div class="employee-container">
+    <div class="employee-card" *ngFor="let user of users">
+      <i class="fas fa-user"></i>
+      <h2>{{ user.name }} {{ user.surname }} </h2>
+      <p>Email: {{ user.email }}</p>
+      <p>Position: {{user.role.name }}</p>
+    </div>
+  </div>
+</body>
+</html>

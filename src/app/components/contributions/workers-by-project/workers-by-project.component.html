@@ -1,0 +1,24 @@
+<h1>Workers on project</h1>
+
+<h1 class="subject">Add worker to project</h1>
+      <div >
+        <select class="options" id="workerName" name="workerName" [(ngModel)]="selectedWorker" required>
+          <option  class="options" disabled="true" value="">Select Worker </option>
+          <option *ngFor="let selectUser of selectUsers" [value]="selectUser.id">{{ selectUser.name }} {{selectUser.surname}}</option>
+        </select>
+        <button class="create-project-button" type="addWorker" (click)="addWorkerToProject()">Add worker</button>
+      </div>
+<table class="workers-table">
+  <tr *ngFor="let user of users">
+    <td>
+      <div class="worker-info">
+          <div><strong>Worker:</strong> {{ user.name }}</div>
+          <div><strong>Surname:</strong> {{ user.surname }}</div>
+        </div>
+        <div><strong>Phone:</strong> {{ user.phoneNumber }}</div>
+        <div><strong>Address:</strong> {{ user.address.streetName }} {{ user.address.streetNumber }}, {{ user.address.city }}, {{ user.address.country }}</div>
+        <div><strong>Email:</strong> {{ user.email }}</div>
+        <button class="create-project-button" type="addWorker" *ngIf="role === 'ROLE_PM'" (click)="removeWorkerToProject(user.id)">Remove worker</button>
+    </td>
+  </tr>
+</table>
