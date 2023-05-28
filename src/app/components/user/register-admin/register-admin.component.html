@@ -1,0 +1,41 @@
+  
+  <h1>Register admin</h1>
+<form (submit)="registerAdmin()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="adminDto.name" required>
+    </div>
+    <div>
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" [(ngModel)]="adminDto.surname" required>
+  </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="adminDto.password" required>
+    </div>
+    <div>
+      <label for="phoneNumber">Phone number:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="adminDto.phoneNumber" required>
+  </div>
+    <div>
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" [(ngModel)]="adminDto.email" required>
+    </div>
+    <div>
+      <label for="city">city:</label>
+      <input type="text" id="city" name="city" [(ngModel)]="address.city" required>
+  </div>
+  <div>
+    <label for="streetName">Street name:</label>
+    <input type="text" id="streetName" name="streetName" [(ngModel)]="address.streetName" required>
+</div>
+<div>
+  <label for="country">Country:</label>
+  <input type="text" id="country" name="country" [(ngModel)]="address.country" required>
+</div>
+<div>
+  <label for="streetNumber">Street number:</label>
+  <input type="text" id="streetNumber" name="streetNumber" [(ngModel)]="address.streetNumber" required>
+</div>
+    <button type="submit">Register</button>
+</form>

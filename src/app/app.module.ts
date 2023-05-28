@@ -19,6 +19,10 @@ import { LoginComponent } from './components/user/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
 import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
+import { ContributionComponent } from './components/contributions/contribution.component';
+import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
+import { AuthGuard } from './components/user/service/auth/auth-guard.service';
+import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { UserActivationComponent } from './components/users/user-activation/user
     ProjectComponent,
     UserComponent,
     LoginComponent,
-    UserActivationComponent
+    UserActivationComponent,
+    ContributionComponent,
+    WorkersByProjectComponent,
+    RegisterAdminComponent
+
   ],
   imports: [
     BrowserModule,
@@ -44,8 +52,9 @@ import { UserActivationComponent } from './components/users/user-activation/user
     MatIconModule,
     HttpClientModule,
     FormsModule
-  ],
+    ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
