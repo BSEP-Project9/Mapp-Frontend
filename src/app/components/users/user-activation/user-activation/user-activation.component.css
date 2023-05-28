@@ -1,0 +1,75 @@
+/* Center the table on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+/* Add some styles to the table */
+table {
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 20px;
+}
+
+th {
+  background-color: #4169e1;
+  color: #ffffff;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #FFE5B4;
+}
+
+tr:hover {
+  background-color: #f57979;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff6f00;
+  color: #f47f7f;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Apply different styles on hover */
+.button:hover {
+  background-color: #118426;
+  cursor: pointer;
+}
+
+input {
+  transition: width 0.3s ease;
+  width: 100px; /* Initial width */
+}
+
+input.active {
+  width: 500px; /* Expanded width */
+}
+
+.custom-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #ff6f00;
+  box-shadow: 0 0 5px #ff6f00;
+}
