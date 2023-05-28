@@ -28,6 +28,7 @@ export class UserActivationComponent implements OnInit {
 
   public accept(obj: UserDTO): void{
     this.activationService.acceptRequest(obj).subscribe()
+    alert("Email sent.")
   }
 
   public decline(obj: UserDTO,msg: string): void{
@@ -36,7 +37,9 @@ export class UserActivationComponent implements OnInit {
       alert("Message must exist if decline is pressed!")
     } else {
       this.activationService.declineRequest(obj,msg).subscribe()
+      alert("Email sent.")
     }
+
   }
 
 }
