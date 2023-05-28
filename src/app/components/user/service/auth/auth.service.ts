@@ -115,8 +115,7 @@ export class AuthService {
               this.nav.next('true');
             });
         
-            this.router.navigate(['success-login'])
-           //window.location.href = "http://localhost:4200/success-login"
+            this.router.navigate(['/success-login'])
       },
       error =>{
         window.location.href = "http://localhost:4200/error-page"
