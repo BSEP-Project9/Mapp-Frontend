@@ -18,6 +18,10 @@ import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
+import { PasswordlessLoginComponent } from './components/user/passwordless-login/passwordless-login.component';
+import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { SuccessLoginComponent } from './shared/success-login/success-login.component';
 import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
 import { ContributionComponent } from './components/contributions/contribution.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
@@ -35,6 +39,10 @@ import { RegisterAdminComponent } from './components/user/register-admin/registe
     ProjectComponent,
     UserComponent,
     LoginComponent,
+    PasswordlessLoginComponent,
+    LoginRedirectComponent,
+    ErrorPageComponent,
+    SuccessLoginComponent,
     UserActivationComponent,
     ContributionComponent,
     WorkersByProjectComponent,
