@@ -22,9 +22,11 @@ import { PasswordlessLoginComponent } from './components/user/passwordless-login
 import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { SuccessLoginComponent } from './shared/success-login/success-login.component';
+import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
 import { ContributionComponent } from './components/contributions/contribution.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
+import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 
 
 @NgModule({
@@ -41,8 +43,11 @@ import { AuthGuard } from './components/user/service/auth/auth-guard.service';
     LoginRedirectComponent,
     ErrorPageComponent,
     SuccessLoginComponent,
+    UserActivationComponent,
     ContributionComponent,
-    WorkersByProjectComponent
+    WorkersByProjectComponent,
+    RegisterAdminComponent
+
   ],
   imports: [
     BrowserModule,

@@ -31,9 +31,19 @@ export interface UserDto {
     surname : string,
     phoneNumber : number,
     role : string,
-    address : Address
+    address : Address,
+    skills : Skills[]
 }
 
 export interface Role {
     name: string;
+}
+
+export interface AdminDTO {
+    email : string,
+    password : string,
+    name : string,
+    surname : string,
+    phoneNumber : number,
+    address : Address
 }

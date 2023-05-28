@@ -14,5 +14,6 @@
  <div class="menu-container">
         <div class="item-container" routerLink="all-projects" *ngIf="role === 'ROLE_ADMIN' || role === 'ROLE_PM'"><mat-icon>device_hub</mat-icon>Projects</div>
         <div class="item-container" routerLink="all-users" *ngIf="role === 'ROLE_ADMIN'"><mat-icon>person</mat-icon>Employees</div>
-        <div class="item-container-right" routerLink="admin-profile" *ngIf="userExists === 'true'" ><mat-icon>info</mat-icon>Profile</div>
+        <div class="item-container" routerLink="register-admin" *ngIf="role === 'ROLE_ADMIN'"><mat-icon>person</mat-icon>Register admin</div>
+        <div class="item-container" routerLink="admin-profile" *ngIf="userExists === 'true'" ><mat-icon>info</mat-icon>Profile</div>
 </div> 

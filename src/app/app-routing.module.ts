@@ -12,6 +12,8 @@ import { LoginRedirectComponent } from './components/user/login-redirect/login-r
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { SuccessLoginComponent } from './shared/success-login/success-login.component';
 import { AuthGuardService } from './shared/service/auth-guard.service';
+import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
+import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
 
 
 const routes: Routes = [
@@ -26,8 +28,10 @@ const routes: Routes = [
   {path: 'success-login', component: SuccessLoginComponent},
   { path: 'register', component: UserRegisterComponent, pathMatch:'full'},
   {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
+  {path: 'register-admin', component: RegisterAdminComponent, canActivate: [AuthGuard]},
+  {path: 'activation', component: UserActivationComponent}
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
