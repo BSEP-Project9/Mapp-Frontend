@@ -17,9 +17,19 @@ export class PasswordlessLoginComponent implements OnInit {
   }
 
   sendEmail(){
-    this.authService.handlePasswordlessLogin(this.credential).subscribe(()=>{
-      alert("Email is send")
+    if(this.credential.email !== undefined){
+      this.authService.handlePasswordlessLogin(this.credential)
+    .subscribe({
+      next:data =>{
+        alert("Email is send")
+      },
+      error: error => {
+        alert("Account not activated or does not exist")
+      }
     })
+    }else{
+      alert("Credentials are invalid")
+    }
   }
 
 }
