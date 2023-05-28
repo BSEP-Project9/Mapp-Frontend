@@ -44,7 +44,14 @@ export class ProfileComponent implements OnInit {
 
   addSkill() {
     this.userService.addSkill(this.skills, this.authService.getUserId())
-    .subscribe(data => console.log(data));
+    .subscribe(data => {
+      console.log(data);
+      this.userService.getUserById(this.authService.getUserId())
+      .subscribe((response: UserDto ) => {
+        this.user = response;
+        console.log(this.user);
+      });
+    });
   }
  
 }
