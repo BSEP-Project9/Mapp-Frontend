@@ -68,6 +68,7 @@ export class WorkersByProjectComponent implements OnInit {
       employeeIds: workerIds
     };
     this.contributionService.addWorkersToProject(payload).subscribe(data => console.log(data));
+    
     // window.location.reload();
   }
 
