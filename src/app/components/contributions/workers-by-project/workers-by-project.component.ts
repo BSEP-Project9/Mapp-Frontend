@@ -6,6 +6,7 @@ import { Project } from '../../projects/model/project.model';
 import { User } from '../../user/model/user.model';
 import { UserService } from '../../user/service/user.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../user/service/auth/auth.service';
 
 @Component({
   selector: 'app-workers-by-project',
@@ -20,16 +21,18 @@ export class WorkersByProjectComponent implements OnInit {
   public project : Project = {} as Project ;  
   public selectedWorker: number = 0; 
   errorMessage = "";
+  role = "";
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private userService: UserService, private contributionService: ContributionService) { }
+  constructor(private authService: AuthService, private http: HttpClient, private route: ActivatedRoute, private userService: UserService, private contributionService: ContributionService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.projectId = Number(params.get('id'));
-  if (this.projectId) {
-    this.loadUsers();
+      if (this.projectId) {
+        this.loadUsers();
       }
     });
+     this.role = this.authService.getRole() || "";
   }
 
   loadUsers (): void {
@@ -62,7 +65,7 @@ export class WorkersByProjectComponent implements OnInit {
   addWorkerToProject () {
     const workerIds: number[] = [];
     workerIds.push(this.selectedWorker);
-    alert(this.selectedWorker);
+    alert("Employee added");
     const payload = {
       projectId: this.projectId,
       employeeIds: workerIds
@@ -74,8 +77,6 @@ export class WorkersByProjectComponent implements OnInit {
   removeWorkerToProject (userId: number) {
     this.contributionService.removeWorkerFromProject(userId, this.projectId).subscribe(data => console.log(data));
     alert("This user is removed from project" );
-    
-    // window.location.reload();
   }
 
 }

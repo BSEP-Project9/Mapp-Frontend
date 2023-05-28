@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Address, User, UserDto } from '../model/user.model';
+import { Address, Skills, User, UserDto } from '../model/user.model';
 import { UserService } from '../service/user.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
@@ -11,9 +11,12 @@ import { AuthService } from '../service/auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
   
+  
   public user : UserDto = {} as UserDto;
   public address : Address = {} as Address;
+  public skills : Skills = {} as Skills;
   isEditMode: boolean = false;
+  public role = '';
 
   constructor(private userService : UserService, 
               private router : Router, 
@@ -26,7 +29,6 @@ export class ProfileComponent implements OnInit {
       alert("saved");
       console.log(this.user);
       this.userService.edit(this.user).subscribe(data => console.log(data));
-      window.location.reload();
     }
   }
 
@@ -40,5 +42,9 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  addSkill() {
+    this.userService.addSkill(this.skills, this.authService.getUserId())
+    .subscribe(data => console.log(data));
+  }
  
 }

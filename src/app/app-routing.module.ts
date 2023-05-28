@@ -7,6 +7,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
+import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 
 const routes: Routes = [
   { path: 'register', component: UserRegisterComponent, pathMatch:'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'all-users' , component : UserComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
+  {path: 'register-admin', component: RegisterAdminComponent, canActivate: [AuthGuard]}
 ];
  
 @NgModule({
