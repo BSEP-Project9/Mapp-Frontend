@@ -23,6 +23,7 @@ import { ContributionComponent } from './components/contributions/contribution.c
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
+import { EngineersComponent } from './components/users/engineers/engineers/engineers.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { RegisterAdminComponent } from './components/user/register-admin/registe
     UserActivationComponent,
     ContributionComponent,
     WorkersByProjectComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    EngineersComponent
 
   ],
   imports: [

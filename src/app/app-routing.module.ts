@@ -9,6 +9,7 @@ import { UserRegisterComponent } from './components/users/user-register/user-reg
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
+import { EngineersComponent } from './components/users/engineers/engineers/engineers.component';
 
 
 
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
   {path: 'register-admin', component: RegisterAdminComponent, canActivate: [AuthGuard]},
-  {path: 'activation', component: UserActivationComponent}
+  {path: 'activation', component: UserActivationComponent},
+  {path: 'all-engineers', component: EngineersComponent}
 ];
 
 @NgModule({
