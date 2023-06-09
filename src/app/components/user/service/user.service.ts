@@ -39,6 +39,18 @@ export class UserService {
   edit(payload : any) : Observable<void> {
     return this.http.put<void>(`${this.baseApiUrl}`,JSON.stringify(payload), { headers: this.headers });
   }
+  
+  editPassword(payload : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/pswd`,JSON.stringify(payload), { headers: this.headers });
+  }
+
+  block(email : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/block/${email}`, [], { headers: this.headers });
+  }
+
+  unblock(email : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/unblock/${email}`, [], { headers: this.headers });
+  }
 
   public registerAdmin(adminDto: any): Observable<any> {
     return this.http.post<any>(`${this.baseApiUrl}/register-admin`,JSON.stringify(adminDto) ,{headers: this.headers} )
