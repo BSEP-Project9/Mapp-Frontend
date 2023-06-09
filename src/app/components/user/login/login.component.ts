@@ -14,10 +14,15 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    
   }
 
   loginUser(){
-    this.authService.handleLogin(this.userCredentials)
+    if(this.userCredentials.email !== undefined && this.userCredentials.password !== undefined){
+      this.authService.handleLogin(this.userCredentials)
+    }
+    else
+      alert("Credentials are invalid")
   }
 
 }

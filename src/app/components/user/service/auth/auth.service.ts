@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { Credentials, LoggedUser, UserTokenState } from '../../model/loginDTO.model';
+import { Credentials, LoggedUser, PassworldessLogin, PassworldessLoginResponse, UserTokenState } from '../../model/loginDTO.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,8 @@ export class AuthService {
   private user: LoggedUser = {} as LoggedUser;
   public currentNav = this.nav.asObservable();
   private currentUserId = Number(localStorage.getItem('id'));
+
+  private passwordlessLoginResponse: PassworldessLoginResponse = {} as PassworldessLoginResponse;
 
   constructor(private router:Router,
               private http: HttpClient,
@@ -57,7 +59,7 @@ export class AuthService {
               this.nav.next('true');
             });
 
-            this.router.navigate(['/admin-profile']);
+            this.router.navigate(['/success-login'])
             return res;
         });
   }
@@ -77,6 +79,50 @@ export class AuthService {
     this.nav.next('false');
     this.router.navigate(['']);
   }
+  
+  public handlePasswordlessLogin(credential: PassworldessLogin):Observable<any>{
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<any>(`${this.baseUrl}/email-login`, JSON.stringify(credential), { headers: headers })
+  }
+
+  public confirmEmailLogin(token:string, email:string){
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    this.http.get<PassworldessLoginResponse>(`${this.baseUrl}/check-email/confirm?token=${token}&email=${email}`).
+    subscribe(
+    data => {
+        this.passwordlessLoginResponse = data;
+            localStorage.setItem('accessToken', data.accessToken);
+            this.accessToken = data.accessToken;
+
+            localStorage.setItem('refreshToken', data.refreshToken);
+            this.refreshToken = data.refreshToken;
+          
+            let decodedJWT;
+            if (this.accessToken != null) {
+                decodedJWT = JSON.parse(window.atob(this.accessToken.split('.')[1]));
+            }
+            this.userService.getUserInfoByEmail(decodedJWT.sub).subscribe((response: LoggedUser) => {
+
+              this.user = response;
+              console.log(this.user.role)
+              localStorage.setItem('role', this.user.role);
+              this.currentRole = this.user.role;
+              this.authenticated = this.currentRole ? true : false;
+        
+              localStorage.setItem('id', this.user.id ? this.user.id.toString() : '-1');
+              this.currentUserId = Number(this.user.id);
+
+              this.nav.next('true');
+            });
+        
+            this.router.navigate(['/success-login'])
+      },
+      error =>{
+        window.location.href = "http://localhost:4200/error-page"
+      }
+      
+    );
+  }
 
   public updateAccessToken() {
     const headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAccessToken()}`});
@@ -87,6 +133,7 @@ export class AuthService {
   public saveTokens(data: UserTokenState) {
     this.accessToken = data.accessToken;
     localStorage.setItem('accessToken', this.accessToken);
+
   }
 
   public handleError(error:HttpErrorResponse)

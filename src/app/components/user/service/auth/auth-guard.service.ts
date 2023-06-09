@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { UserTokenState } from '../../model/loginDTO.model';
@@ -21,9 +21,6 @@ export class AuthGuard implements CanActivate {
     }
 
     const isRefreshSuccess = await this.refreshingTokens(token);
-    if (!isRefreshSuccess) {
-      this.router.navigate(["login"]);
-    }
 
     return isRefreshSuccess;
   }
