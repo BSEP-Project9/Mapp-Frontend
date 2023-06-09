@@ -10,7 +10,8 @@ export interface User{
     skills : Skills[],
    // projects : Contribution[],
     startOfEmpolment : Date ,
-    role: Role
+    role: Role,
+    blocked: boolean
 }
 export interface Address {
     country : string,

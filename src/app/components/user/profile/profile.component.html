@@ -21,7 +21,11 @@
     <input type="text" [(ngModel)]="user.address.city" [disabled]="!isEditMode">
   </div>
   <button (click)="toggleEditMode()">{{ isEditMode ? 'Save' : 'Edit' }}</button>
-
+  <div class="form-group">
+    <label>New password:</label>
+    <input type="password" [(ngModel)]="newPassword" [disabled]="!isPasswordEditMode">
+  </div>
+  <button (click)="toggleEditPasswordMode()">{{ isPasswordEditMode ? 'Save' : 'Edit' }}</button>
   <div >
   <h1>Skills</h1>
       <div *ngFor="let skill of user.skills">
