@@ -28,7 +28,10 @@ import { WorkersByProjectComponent } from './components/contributions/workers-by
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 import {MatTableModule} from '@angular/material/table';
-
+import { UserCvComponent } from './components/users/user-cv/user-cv.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import {MatTableModule} from '@angular/material/table';
     UserActivationComponent,
     ContributionComponent,
     WorkersByProjectComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    UserCvComponent
 
   ],
   imports: [
@@ -61,7 +65,10 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
     ],
   providers: [
     AuthGuard,

@@ -17,5 +17,6 @@
         <div class="item-container" routerLink="register-admin" *ngIf="role === 'ROLE_ADMIN'"><mat-icon>person</mat-icon>Register admin</div>
         <div class="item-container" routerLink="admin-profile" *ngIf="userExists === 'true' && role !== 'ROLE_HR'" ><mat-icon>info</mat-icon>Profile</div>
         <div class="item-container" routerLink="activation" *ngIf="role === 'ROLE_ADMIN'" ><mat-icon>power_settings_new</mat-icon>Activation</div>
-        <div class="item-container" routerLink="cvs"><mat-icon>book</mat-icon>CVs</div>
+        <div class="item-container" routerLink="cvs" *ngIf="role === 'ROLE_HR' || role === 'ROLE_PM'"><mat-icon>book</mat-icon>CVs</div>
+        <div class="item-container" routerLink="user-cv/4"><mat-icon>book</mat-icon>user-cv</div>
 </div> 

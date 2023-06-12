@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user/model/user.model';
 import { UserService } from '../user/service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,7 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'actions'];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('role') === 'ROLE_HR') {
@@ -32,7 +33,7 @@ export class UsersComponent implements OnInit {
   }
 
   view(id: string) {
-    // console.log(id);
+    this.router.navigate(['user-cv', id]);
   }
 
 }

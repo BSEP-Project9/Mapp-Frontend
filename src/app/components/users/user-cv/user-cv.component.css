@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+    height: 70%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    border: solid 2px black;
+}
+
+.head {
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    border-bottom: 2px solid black;
+}
+
+.body {
+    background-color: gold;
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+
+.back-button {
+    height: 30%;
+    margin-left: 2%;
+}

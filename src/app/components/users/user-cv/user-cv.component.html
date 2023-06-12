@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="content">
+        <div class="head">
+            <button mat-raised-button color="warn" (click)="goBack()" class="back-button">Back</button>
+        </div>
+        <div class="body">
+            <form>
+                <mat-form-field appearance="fill">
+                    <label>Name</label>
+                  <input matInput placeholder="{{user.name}}" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <label>Surname</label>
+                  <input matInput placeholder="{{user.surname}}" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <label>Email</label>
+                  <input matInput placeholder="{{user.email}}" required>
+                </mat-form-field>
+
+              </form>
+        </div>
+    </div>
+</div>

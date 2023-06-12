@@ -33,6 +33,13 @@ export class UserService {
     return this.http.get<UserDto>(`${this.baseApiUrl}/${id}`, {headers: headers});
   }
 
+  public getWorkerById(id: string):Observable<User>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<User>(`${this.baseApiUrl}/${id}`, {headers: headers});
+  }
+
   public getEmployeesManagedByPM(id: string):Observable<User[]>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
