@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user/model/user.model';
+import { UserService } from '../user/service/user.service';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = [];
+  displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'actions'];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('role') === 'ROLE_HR') {
+      this.userService.getWorkers().subscribe((res: User[]) => {
+        this.users = res;
+      });
+    } else if (localStorage.getItem('role') === 'ROLE_PM') {
+      const id = localStorage.getItem('id');
+      if (id) {
+        this.userService.getEmployeesManagedByPM(id).subscribe((res: User[]) => {
+          this.users = res;
+        });
+      }
+
+    }
+
+  }
+
+  view(id: string) {
+    // console.log(id);
   }
 
 }

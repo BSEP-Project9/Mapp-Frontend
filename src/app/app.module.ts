@@ -27,6 +27,7 @@ import { ContributionComponent } from './components/contributions/contribution.c
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { RegisterAdminComponent } from './components/user/register-admin/registe
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
     ],
   providers: [
     AuthGuard,
