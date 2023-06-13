@@ -32,6 +32,9 @@ import { UserCvComponent } from './components/users/user-cv/user-cv.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatTableModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatListModule,
+    MatInputModule,
+    MatChipsModule
     ],
   providers: [
     AuthGuard,
