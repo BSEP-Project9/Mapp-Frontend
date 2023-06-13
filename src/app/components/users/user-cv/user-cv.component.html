@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="content">
+        <div class="head">
+            <button mat-raised-button color="warn" (click)="goBack()" class="back-button">Back</button>
+            <label id="cv-label">Curriculum Vitae</label>
+        </div>
+        <div class="body">
+          <div class="main-info">
+            <mat-form-field appearance="outline">
+              <label>Name</label>
+              <input matInput placeholder="{{user.name}}" required readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <label>Surname</label>
+              <input matInput placeholder="{{user.surname}}" required readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <label>Email</label>
+              <input matInput placeholder="{{user.email}}" required readonly>
+            </mat-form-field>
+          </div>
+
+          <div class="skills">
+            <label>Skills</label>
+            <mat-chip-list aria-label="Skills">
+              <mat-chip *ngFor="let skill of user.skills">
+                {{skill.name}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+          <div class="skills">
+            <label>Projects</label>
+            <mat-chip-list aria-label="Projects">
+              <mat-chip *ngFor="let project of projects">
+                {{project.name}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+    </div>
+</div>

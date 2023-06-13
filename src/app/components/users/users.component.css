@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+table {
+    width: 80%;
+}
+
+.view-button {
+    background-color: rgb(126, 201, 126);
+}

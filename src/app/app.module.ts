@@ -27,7 +27,14 @@ import { ContributionComponent } from './components/contributions/contribution.c
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
-
+import {MatTableModule} from '@angular/material/table';
+import { UserCvComponent } from './components/users/user-cv/user-cv.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,8 @@ import { RegisterAdminComponent } from './components/user/register-admin/registe
     UserActivationComponent,
     ContributionComponent,
     WorkersByProjectComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    UserCvComponent
 
   ],
   imports: [
@@ -59,7 +67,14 @@ import { RegisterAdminComponent } from './components/user/register-admin/registe
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatInputModule,
+    MatChipsModule
     ],
   providers: [
     AuthGuard,
