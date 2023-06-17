@@ -14,6 +14,8 @@ import { SuccessLoginComponent } from './shared/success-login/success-login.comp
 import { AuthGuardService } from './shared/service/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
+import { EngineersComponent } from './components/users/engineers/engineers/engineers.component';
+
 import { UsersComponent } from './components/users/users.component';
 import { UserCvComponent } from './components/users/user-cv/user-cv.component';
 
@@ -32,6 +34,7 @@ const routes: Routes = [
   {path: 'all-projects/project/workers/:id' , component: WorkersByProjectComponent, canActivate: [AuthGuard]},
   {path: 'register-admin', component: RegisterAdminComponent, canActivate: [AuthGuard]},
   {path: 'activation', component: UserActivationComponent},
+  {path: 'all-engineers', component: EngineersComponent},
   {path: 'cvs', component: UsersComponent},
   {path: 'user-cv/:id', component: UserCvComponent}
 ];

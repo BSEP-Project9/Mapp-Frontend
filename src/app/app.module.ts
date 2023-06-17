@@ -27,6 +27,7 @@ import { ContributionComponent } from './components/contributions/contribution.c
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
+import { EngineersComponent } from './components/users/engineers/engineers/engineers.component';
 import {MatTableModule} from '@angular/material/table';
 import { UserCvComponent } from './components/users/user-cv/user-cv.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -54,6 +55,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ContributionComponent,
     WorkersByProjectComponent,
     RegisterAdminComponent,
+    EngineersComponent,
     UserCvComponent
 
   ],
