@@ -29,7 +29,7 @@ export class AuthService {
 
   public handleLogin(credentials: Credentials) {
     this.login(credentials).pipe(catchError(()=> {
-        alert('Account not activated or does not exist');
+        alert('Account not activated or does not exist or blocked');
         return of()
     }))
         .subscribe((res: UserTokenState) => {

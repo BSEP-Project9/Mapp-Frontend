@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Search</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .search-input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+    <h1>User Search</h1>
+
+
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of engineersList">
+              <td>{{ item.name }}</td>
+              <td>{{ item.surname }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.startOfEmployment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+
+        <input
+          type="text"
+          name="name"
+          id="name-input"
+          class="search-input"
+          placeholder="Name"
+          ngModel
+          required
+        />
+
+        <input
+          type="text"
+          name="surname"
+          id="surname-input"
+          class="search-input"
+          placeholder="Surname"
+          ngModel
+          required
+        />
+
+      <input
+        type="text"
+        name="email"
+        id="email-input"
+        class="search-input"
+        placeholder="Email"
+        ngModel
+        required
+      />
+
+      <input
+        type="date"
+        name="startOfEmployment"
+        id="date-input"
+        class="search-input"
+        ngModel
+        required
+      />
+
+      <button type="submit" onclick="">Submit</button>
+
+    </form>
+
+</html>
