@@ -34,32 +34,4 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 
-  public handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-    if (!this.isRefreshing) {
-      this.isRefreshing = true;
-
-      return this.auth.updateAccessToken().pipe(
-        switchMap((data: UserTokenState) => {
-          this.isRefreshing = false;
-          this.auth.saveTokens(data);
-  
-          request = request.clone({
-            setHeaders:{
-              Authorization: `Bearer ${this.auth.getAccessToken()}`
-            }
-          })
-  
-          return next.handle(request);
-        }),
-        catchError(error => {
-          this.isRefreshing = false;
-          this.auth.logout();
-          return throwError(() => error); 
-        })
-      );
-    }
-    return next.handle(request);
-
-  }
-
 }

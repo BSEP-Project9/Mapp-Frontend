@@ -54,7 +54,9 @@ export class ProjectComponent implements OnInit {
     this.projectService.createProject(this.project).subscribe(
       data => {
         console.log(data);
-        window.location.reload();
+        this.projectService.getProjects().subscribe(res =>{
+          this.projects = res;
+        })
     }, error => {
       console.log(error);
       this.errorMessage = error.message;

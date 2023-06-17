@@ -22,11 +22,29 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseApiUrl}/all`, {headers: this.headers});
   }
 
+  getWorkers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseApiUrl}/all/workers`, {headers: this.headers});
+  }
+
   public getUserById(id: number):Observable<UserDto>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     return this.http.get<UserDto>(`${this.baseApiUrl}/${id}`, {headers: headers});
+  }
+
+  public getWorkerById(id: string):Observable<User>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<User>(`${this.baseApiUrl}/${id}`, {headers: headers});
+  }
+
+  public getEmployeesManagedByPM(id: string):Observable<User[]>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<User[]>(`${this.baseApiUrl}/pm/${id}`, {headers: headers});
   }
 
   public getUserInfoByEmail(email:string):Observable<LoggedUser>{
@@ -38,6 +56,18 @@ export class UserService {
 
   edit(payload : any) : Observable<void> {
     return this.http.put<void>(`${this.baseApiUrl}`,JSON.stringify(payload), { headers: this.headers });
+  }
+  
+  editPassword(payload : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/pswd`,JSON.stringify(payload), { headers: this.headers });
+  }
+
+  block(email : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/block/${email}`, [], { headers: this.headers });
+  }
+
+  unblock(email : any) : Observable<void> {
+    return this.http.put<void>(`${this.baseApiUrl}/unblock/${email}`, [], { headers: this.headers });
   }
 
   public registerAdmin(adminDto: any): Observable<any> {

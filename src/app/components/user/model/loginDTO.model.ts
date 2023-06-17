@@ -12,3 +12,13 @@ export interface LoggedUser{
     "id": string,
     "role": string
 }
+
+export interface PassworldessLogin{
+    "email":string
+}
+
+export interface PassworldessLoginResponse{
+    "accessToken":string,
+    "refreshToken":string,
+    "redirectLocation":string
+}

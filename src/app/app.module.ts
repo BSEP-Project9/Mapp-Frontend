@@ -18,13 +18,24 @@ import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './components/user/shared/auth.interceptor';
+import { PasswordlessLoginComponent } from './components/user/passwordless-login/passwordless-login.component';
+import { LoginRedirectComponent } from './components/user/login-redirect/login-redirect.component';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { SuccessLoginComponent } from './shared/success-login/success-login.component';
 import { UserActivationComponent } from './components/users/user-activation/user-activation/user-activation.component';
 import { ContributionComponent } from './components/contributions/contribution.component';
 import { WorkersByProjectComponent } from './components/contributions/workers-by-project/workers-by-project.component';
 import { AuthGuard } from './components/user/service/auth/auth-guard.service';
 import { RegisterAdminComponent } from './components/user/register-admin/register-admin.component';
 import { EngineersComponent } from './components/users/engineers/engineers/engineers.component';
-
+import {MatTableModule} from '@angular/material/table';
+import { UserCvComponent } from './components/users/user-cv/user-cv.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -36,11 +47,16 @@ import { EngineersComponent } from './components/users/engineers/engineers/engin
     ProjectComponent,
     UserComponent,
     LoginComponent,
+    PasswordlessLoginComponent,
+    LoginRedirectComponent,
+    ErrorPageComponent,
+    SuccessLoginComponent,
     UserActivationComponent,
     ContributionComponent,
     WorkersByProjectComponent,
     RegisterAdminComponent,
-    EngineersComponent
+    EngineersComponent,
+    UserCvComponent
 
   ],
   imports: [
@@ -53,7 +69,14 @@ import { EngineersComponent } from './components/users/engineers/engineers/engin
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatInputModule,
+    MatChipsModule
     ],
   providers: [
     AuthGuard,

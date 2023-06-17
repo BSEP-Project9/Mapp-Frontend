@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../../user/model/user.model';
 import { Contribution, ProjectContributionDto } from '../model/contribution.model';
+import { Project } from '../../projects/model/project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class ContributionService {
 
   removeWorkerFromProject(workerId : number, projectId: number) : Observable<void> {
     return this.http.delete<void>(`${this.baseApiUrl}/workers-from-project/${workerId}/${projectId}`, { headers: this.headers });
+  }
+
+  getAllProjectsByWorker(id: string) {
+    return this.http.get<Project[]>(`${this.baseApiUrl}/projects/worker/${id}`);
   }
 }

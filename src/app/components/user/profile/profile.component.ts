@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   public skills : Skills = {} as Skills;
   isEditMode: boolean = false;
   public role = '';
+  public newPassword = '';
+  isPasswordEditMode: boolean = false;
 
   constructor(private userService : UserService, 
               private router : Router, 
@@ -32,6 +34,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  toggleEditPasswordMode() {
+    this.isPasswordEditMode = !this.isPasswordEditMode;
+    if (!this.isPasswordEditMode) {
+      alert("saved password");
+      console.log(this.newPassword);
+      this.userService.editPassword({ email:this.user.email, updatedPassword: this.newPassword }).subscribe(data => console.log(data));
+    }
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) =>{
       this.userService.getUserById(this.authService.getUserId())
@@ -44,7 +55,14 @@ export class ProfileComponent implements OnInit {
 
   addSkill() {
     this.userService.addSkill(this.skills, this.authService.getUserId())
-    .subscribe(data => console.log(data));
+    .subscribe(data => {
+      console.log(data);
+      this.userService.getUserById(this.authService.getUserId())
+      .subscribe((response: UserDto ) => {
+        this.user = response;
+        console.log(this.user);
+      });
+    });
   }
  
 }
